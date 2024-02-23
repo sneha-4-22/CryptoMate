@@ -1,6 +1,6 @@
 # StockForecast
 
-StockForecast is a stock price analysis dashboard that provides users with historical data and forecasted trends for selected stocks. It utilizes the Taipy GUI library for creating interactive user interfaces.
+StockForecast is a stock price analysis  that provides users with  data and forecasted trends for selected stocks. It utilizes the Taipy GUI library for creating interactive user interfaces.
 
 ## Features
 
