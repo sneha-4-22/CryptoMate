@@ -6,7 +6,7 @@ StockForecast is a stock price analysis  that provides users with  data and fore
 
 - The GUI application will open in your default web browser. 
 - You can interact with the dashboard to select the stock, date range, and number of years for prediction using the Taipy GUI components.
-- Explore the historical data and forecasted trends.
+- Explore the  data and insights.
 
 ## Requirements
 
