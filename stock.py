@@ -9,6 +9,7 @@ start_date = "2015-01-01"
 end_date = date.today().strftime("%Y-%m-%d")
 selected_stock = 'MSFT'
 n_years = 1
+path="logo.jpg"
 
 def get_stock_data(ticker, start, end):
     ticker_data = yf.download(ticker, start, end)  
@@ -50,45 +51,48 @@ partial_md = "<|{forecast}|table|>"
 dialog_md = "<|{show_dialog}|dialog|partial={partial}|title=Stock Forecast |on_action={lambda state: state.assign('show_dialog', False)}|>"
 page = """
 <|container style="background-color: #FFC0CB; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(245, 40, 145, 0.8);">
+<|text-center|
 # Stock Price **Analysis**
+
+<|{path}|image|>
 <|layout|columns=1 2 1|gap=40px|class_name=card p2|
 <|part|years style="margin-bottom: 20px;">
-#### Prediction **years**{: style="color: white"}
-Select number of prediction years: <|{n_years}|>  
-<|{n_years}|slider|min=1|max=5|>  
+#### Prediction **years**{: style="color: pink"}
+Select the no. of years you wanna predict: <|{n_years}|>  
+<|{n_years}|slider|min=1|max=10|>  
 <|PREDICT|button|on_action=forecast_display|class_name={'plain' if len(forecast)==0 else ''}|>
 |years>
 |>
 <|part|ticker style="margin-bottom: 20px;">
-#### Selected **Ticker**{: style="color: white"}
-Please enter a valid ticker: 
+#### Selected **one**{: style="color: pink"}
+Stock name: 
 <|{selected_stock}|input|label=Stock|on_action=get_data_from_range|> 
-or choose a popular one
-<|{selected_stock}|toggle|lov=MSFT;GOOG;AAPL; AMZN; META; COIN; AMC; PYPL|on_change=get_data_from_range|>
+or Select
+<|{selected_stock}|toggle|lov=MSFT;GOOG;AAPL; META|on_change=get_data_from_range|>
 |ticker>
 <|part|dates style="margin-bottom: 20px;">
-#### Selected **Period**{: style="color: white"}
+#### Enter **Time Period**{: style="color: pink"}
 From:
 <|{start_date}|date|on_change=get_data_from_range|>  
 To:
 <|{end_date}|date|on_change=get_data_from_range|> 
 |dates>
-<|part|Historical Data|expandable|expanded=False| style="margin-bottom: 20px;">
+<|part| Analysis |expandable|expanded=False| style="margin-bottom: 20px;">
 <|layout|columns=1 1|
 <|
-### Historical **closing**{: style="color: white"} price
+### Stock **closing**{: style="color: pink"} price
 <|{data}|chart|mode=line|x=Date|y[1]=Open|y[2]=Close|>
 |>
 <|
-### Historical **daily**{: style="color: white"} trading volume
+###  **daily**{: style="color: pink"} trading volume
 <|{data}|chart|mode=line|x=Date|y=Volume|>
 |>
 |>
-### **Whole**{: style="color: white"} historical data: <|{selected_stock}|text|raw|>
+### **Whole**{: style="color: pink"}  data: <|{selected_stock}|text|raw|>
 <|{data}|table|>
 <br/>
 |>
-### **Forecast**{: style="color: white"} Data
+### **Stock Forecast**{: style="color: pink"} 👩🏻‍💻
 <|{forecast}|chart|mode=line|x=Date|y[1]=Lower|y[2]=Upper|>
 <br/>
 <|More info|button|on_action={lambda s: s.assign("show_dialog", True)}|>
