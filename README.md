@@ -1,4 +1,4 @@
-# StockForecast
+༘⋆🌷🫧💭₊˚ෆ˶˘ ³˘⋆🌷˚ෆ⋆❛ ہ ❛⋆♡༘⋆🌷🫧💭₊˚ෆ# StockForecast༘⋆🌷🫧💭₊˚ෆ˶˘ ³˘⋆🌷˚ෆ⋆❛ ہ ❛⋆♡༘⋆🌷🫧💭₊˚ෆ
 
 StockForecast is a stock price analysis  that provides users with  data and forecasted trends for selected stocks. It utilizes the Taipy GUI library for creating interactive user interfaces.
 
