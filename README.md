@@ -1,7 +1,6 @@
 # StockForecast
 
-
-StockForecast  is a stock price analysis dashboard that provides users with historical data and forecasted trends for selected stocks.
+StockForecast is a stock price analysis dashboard that provides users with historical data and forecasted trends for selected stocks. It utilizes the Taipy GUI library for creating interactive user interfaces.
 
 ## Features
 
@@ -23,6 +22,18 @@ StockForecast  is a stock price analysis dashboard that provides users with hist
 
 ```bash
 git clone https://github.com/sneha-4-22/StockForecast.git
+```
+
+2. Set up virtual env
+3. Install the required Python packages
+```bash
+pip install taipy yfinance pandas keras
+
+```
+4. navigate your corresponding folder
+```bash
+taipy mate.py
+
 ```
 ## Trained Stock model preview 
 https://github.com/sneha-4-22/StockForecast/assets/112711068/1eddcc41-9e15-4739-b2db-5d0f13349857
