@@ -38,6 +38,14 @@ taipy mate.py
 ```
 ## APP PREVIEW USING TAIPY GUI 
 ------------------------------------------------------in progresss------------------------------------------------------
+
+
+
+https://github.com/sneha-4-22/StockForecast/assets/112711068/f5f736dd-23db-45a8-9cc8-07f8d507dc42
+
+
+
+
 ## Trained Stock model preview 
 https://github.com/sneha-4-22/StockForecast/assets/112711068/1eddcc41-9e15-4739-b2db-5d0f13349857
 
