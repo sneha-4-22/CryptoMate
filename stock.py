@@ -50,45 +50,46 @@ show_dialog = False
 partial_md = "<|{forecast}|table|>"
 dialog_md = "<|{show_dialog}|dialog|partial={partial}|title=Stock Forecast |on_action={lambda state: state.assign('show_dialog', False)}|>"
 page = """
-<|container style="background-color: #FFC0CB; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(245, 40, 145, 0.8);">
+<|container style="background-color: #FFC0CB; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);">
 <|text-center|
-# Stock Price **Analysis**
-
+# ***Stock Price Analysis***{: style="color: pink"}
 <|{path}|image|>
+#### **Enter the Company name**{: style="color: pink"}
+ Stock Name: 
+<|{selected_stock}|input|label=Stock|on_action=get_data_from_range|> 
+
+<|part|dates style="margin-bottom: 20px;">
+<|text-center|
+#### **Enter Time Period**{: style="color: pink"}
+From:
+<|{start_date}|date|on_change=get_data_from_range|>  
+To:
+<|{end_date}|date|on_change=get_data_from_range|> 
+|dates>
 <|layout|columns=1 2 1|gap=40px|class_name=card p2|
 <|part|years style="margin-bottom: 20px;">
-#### Prediction **years**{: style="color: pink"}
+
+
+#### **Prediction years**{: style="color: pink"}
 Select the no. of years you wanna predict: <|{n_years}|>  
 <|{n_years}|slider|min=1|max=10|>  
 <|PREDICT|button|on_action=forecast_display|class_name={'plain' if len(forecast)==0 else ''}|>
 |years>
 |>
 <|part|ticker style="margin-bottom: 20px;">
-#### Selected **one**{: style="color: pink"}
-Stock name: 
-<|{selected_stock}|input|label=Stock|on_action=get_data_from_range|> 
-or Select
-<|{selected_stock}|toggle|lov=MSFT;GOOG;AAPL; META|on_change=get_data_from_range|>
-|ticker>
-<|part|dates style="margin-bottom: 20px;">
-#### Enter **Time Period**{: style="color: pink"}
-From:
-<|{start_date}|date|on_change=get_data_from_range|>  
-To:
-<|{end_date}|date|on_change=get_data_from_range|> 
-|dates>
+
 <|part| Analysis |expandable|expanded=False| style="margin-bottom: 20px;">
 <|layout|columns=1 1|
 <|
-### Stock **closing**{: style="color: pink"} price
+### **Stock closing and Opening price**{: style="color: pink"} 
 <|{data}|chart|mode=line|x=Date|y[1]=Open|y[2]=Close|>
 |>
 <|
-###  **daily**{: style="color: pink"} trading volume
+### **Trading Insights**{: style="color: pink"} 
 <|{data}|chart|mode=line|x=Date|y=Volume|>
 |>
-|>
-### **Whole**{: style="color: pink"}  data: <|{selected_stock}|text|raw|>
+
+### **Whole data: **{: style="color: pink"}  <|{selected_stock}|text|raw|>
 <|{data}|table|>
 <br/>
 |>
