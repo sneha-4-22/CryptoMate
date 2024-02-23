@@ -13,8 +13,8 @@ n_years = 1
 
 
 def get_stock_data(ticker, start, end):
-    ticker_data = yf.download(ticker, start, end)  # downloading the stock data from START to TODAY
-    ticker_data.reset_index(inplace=True)  # put date in the first column
+    ticker_data = yf.download(ticker, start, end)  
+    ticker_data.reset_index(inplace=True)  
     ticker_data['Date'] = pd.to_datetime(ticker_data['Date']).dt.tz_localize(None)
     return ticker_data
 
