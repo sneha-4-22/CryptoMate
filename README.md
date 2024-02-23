@@ -4,9 +4,9 @@ StockForecast is a stock price analysis dashboard that provides users with histo
 
 ## Features
 
-- **Historical Data Visualization:** View historical closing prices and daily trading volume for selected stocks.
-- **Forecast Data:** Generate forecasted price trends for the selected stock based on machine learning predictions.
-- **Customizable:** Easily select the stock, date range, and number of years for prediction.
+- The GUI application will open in your default web browser. 
+- You can interact with the dashboard to select the stock, date range, and number of years for prediction using the Taipy GUI components.
+- Explore the historical data and forecasted trends.
 
 ## Requirements
 
