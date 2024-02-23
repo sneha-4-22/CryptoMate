@@ -4,10 +4,8 @@ import yfinance as yf
 import pandas as pd
 from keras.models import load_model
 
-# Load your Keras model
 model = load_model('C:\\Users\\Sneha\\Desktop\\FitMate\\model.h5')
 
-# Parameters for retrieving the stock data
 start_date = "2015-01-01"
 end_date = date.today().strftime("%Y-%m-%d")
 selected_stock = 'AAPL'
@@ -37,12 +35,6 @@ def get_data_from_range(state):
 
 
 def generate_forecast_data(data, n_years):
-    # Your model prediction code goes here
-    # Use your loaded Keras model to make predictions
-    # Example:
-    # predictions = model.predict(data)
-
-    # For demonstration purposes, return a DataFrame with random data
     forecast_dates = pd.date_range(end=data['Date'].max(), periods=365 * n_years)
     lower = [10 + i * 2 for i in range(365 * n_years)]
     upper = [20 + i * 3 for i in range(365 * n_years)]
@@ -55,8 +47,6 @@ def forecast_display(state):
     state.forecast = generate_forecast_data(state.data, state.n_years)
     notify(state, 's', 'Prediction done! Forecast data has been updated!')
 
-
-# Getting the data, make initial forecast and build a front-end web-app with Taipy GUI
 data = get_stock_data(selected_stock, start_date, end_date)
 forecast = generate_forecast_data(data, n_years)
 
@@ -136,9 +126,6 @@ Select number of prediction years: <|{n_years}|>
 
 <br/>
 """
-
-
-# Run Taipy GUI
 gui = Gui(page)
 partial = gui.add_partial(partial_md)
 gui.run(dark_mode=False, title="Stock Visualization")
