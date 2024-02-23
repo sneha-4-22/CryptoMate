@@ -1,84 +1,144 @@
-import taipy as tp
-import random
+from taipy.gui import Gui, notify
+from datetime import date
+import yfinance as yf
+import pandas as pd
+from keras.models import load_model
 
-class SnakeGame:
+# Load your Keras model
+model = load_model('C:\\Users\\Sneha\\Desktop\\FitMate\\model.h5')
 
-    def __init__(self, w=40, h=20):
-        self.w = w
-        self.h = h
-        # Init game state
-        self.direction = 'RIGHT'
-        self.head = {'x': w // 2, 'y': h // 2}
-        self.snake = [
-            {'x': self.head['x'], 'y': self.head['y']},
-            {'x': self.head['x'] - 1, 'y': self.head['y']},
-            {'x': self.head['x'] - 2, 'y': self.head['y']}
-        ]
-        self.food = None
-        self._place_food()
-
-    def _place_food(self):
-        self.food = {'x': random.randint(0, self.w - 1), 'y': random.randint(0, self.h - 1)}
-        if self.food in self.snake:
-            self._place_food()
-
-    def play_step(self, direction):
-        # Move snake
-        new_head = {'x': self.head['x'], 'y': self.head['y']}
-        if direction == 'UP':
-            new_head['y'] -= 1
-        elif direction == 'DOWN':
-            new_head['y'] += 1
-        elif direction == 'LEFT':
-            new_head['x'] -= 1
-        elif direction == 'RIGHT':
-            new_head['x'] += 1
-
-        self.snake.insert(0, new_head)
-        self.head = new_head
-
-        # Check if game over
-        game_over = False
-        if (
-            self.head['x'] >= self.w or self.head['x'] < 0 or
-            self.head['y'] >= self.h or self.head['y'] < 0 or
-            self.head in self.snake[1:]
-        ):
-            game_over = True
-
-        # Check if food is eaten
-        if self.head == self.food:
-            self._place_food()
-        else:
-            self.snake.pop()
-
-        return game_over
-
-    def get_board(self):
-        board = [[' ' for _ in range(self.w)] for _ in range(self.h)]
-        for seg in self.snake:
-            board[seg['y']][seg['x']] = '*'
-        board[self.food['y']][self.food['x']] = '#'
-        return [''.join(row) for row in board]
+# Parameters for retrieving the stock data
+start_date = "2015-01-01"
+end_date = date.today().strftime("%Y-%m-%d")
+selected_stock = 'AAPL'
+n_years = 1
 
 
-# Initialize Snake game
-game = SnakeGame()
+def get_stock_data(ticker, start, end):
+    ticker_data = yf.download(ticker, start, end)  # downloading the stock data from START to TODAY
+    ticker_data.reset_index(inplace=True)  # put date in the first column
+    ticker_data['Date'] = pd.to_datetime(ticker_data['Date']).dt.tz_localize(None)
+    return ticker_data
 
-# Define callback function for button clicks
-def move_snake(direction):
-    game_over = game.play_step(direction)
-    if game_over:
-        print("Game Over!")
-    else:
-        board = game.get_board()
-        for row in board:
-            print(row)
 
-# Run the game loop
-while True:
-    move = input("Enter direction (W/A/S/D): ").upper()
-    if move in ['W', 'A', 'S', 'D']:
-        move_snake({'W': 'UP', 'A': 'LEFT', 'S': 'DOWN', 'D': 'RIGHT'}[move])
-    else:
-        print("Invalid input! Use W/A/S/D.")
+def get_data_from_range(state):
+    print("GENERATING HIST DATA")
+    start_date = state.start_date if type(state.start_date) == str else state.start_date.strftime("%Y-%m-%d")
+    end_date = state.end_date if type(state.end_date) == str else state.end_date.strftime("%Y-%m-%d")
+
+    state.data = get_stock_data(state.selected_stock, start_date, end_date)
+    if len(state.data) == 0:
+        notify(state, "error",
+               f"Not able to download data {state.selected_stock} from {start_date} to {end_date}")
+        return
+    notify(state, 's', 'Historical data has been updated!')
+    notify(state, 'w', 'Deleting previous predictions...')
+    state.forecast = pd.DataFrame(columns=['Date', 'Lower', 'Upper'])
+
+
+def generate_forecast_data(data, n_years):
+    # Your model prediction code goes here
+    # Use your loaded Keras model to make predictions
+    # Example:
+    # predictions = model.predict(data)
+
+    # For demonstration purposes, return a DataFrame with random data
+    forecast_dates = pd.date_range(end=data['Date'].max(), periods=365 * n_years)
+    lower = [10 + i * 2 for i in range(365 * n_years)]
+    upper = [20 + i * 3 for i in range(365 * n_years)]
+    forecast_data = pd.DataFrame({'Date': forecast_dates, 'Lower': lower, 'Upper': upper})
+    return forecast_data
+
+
+def forecast_display(state):
+    notify(state, 'i', 'Predicting...')
+    state.forecast = generate_forecast_data(state.data, state.n_years)
+    notify(state, 's', 'Prediction done! Forecast data has been updated!')
+
+
+# Getting the data, make initial forecast and build a front-end web-app with Taipy GUI
+data = get_stock_data(selected_stock, start_date, end_date)
+forecast = generate_forecast_data(data, n_years)
+
+show_dialog = False
+
+partial_md = "<|{forecast}|table|>"
+dialog_md = "<|{show_dialog}|dialog|partial={partial}|title=Forecast Data|on_action={lambda state: state.assign('show_dialog', False)}|>"
+
+page = dialog_md + """<|toggle|theme|>
+<|container|
+# Stock Price **Analysis**{: .color-primary} Dashboard
+
+<|layout|columns=1 2 1|gap=40px|class_name=card p2|
+
+<dates|
+#### Selected **Period**{: .color-primary}
+
+From:
+<|{start_date}|date|on_change=get_data_from_range|>  
+
+To:
+<|{end_date}|date|on_change=get_data_from_range|> 
+|dates>
+
+<ticker|
+#### Selected **Ticker**{: .color-primary}
+
+Please enter a valid ticker: 
+<|{selected_stock}|input|label=Stock|on_action=get_data_from_range|> 
+
+
+or choose a popular one
+
+<|{selected_stock}|toggle|lov=MSFT;GOOG;AAPL; AMZN; META; COIN; AMC; PYPL|on_change=get_data_from_range|>
+|ticker>
+
+<years|
+#### Prediction **years**{: .color-primary}
+Select number of prediction years: <|{n_years}|>  
+<|{n_years}|slider|min=1|max=5|>  
+
+<|PREDICT|button|on_action=forecast_display|class_name={'plain' if len(forecast)==0 else ''}|>
+|years>
+
+|>
+
+
+<|Historical Data|expandable|expanded=False|
+<|layout|columns=1 1|
+<|
+### Historical **closing**{: .color-primary} price
+<|{data}|chart|mode=line|x=Date|y[1]=Open|y[2]=Close|>
+|>
+
+<|
+### Historical **daily**{: .color-primary} trading volume
+<|{data}|chart|mode=line|x=Date|y=Volume|>
+|>
+|>
+
+### **Whole**{: .color-primary} historical data: <|{selected_stock}|text|raw|>
+<|{data}|table|>
+
+<br/>
+|>
+
+
+### **Forecast**{: .color-primary} Data
+<|{forecast}|chart|mode=line|x=Date|y[1]=Lower|y[2]=Upper|>
+
+<br/>
+
+
+<|More info|button|on_action={lambda s: s.assign("show_dialog", True)}|>
+{: .text-center}
+|>
+
+<br/>
+"""
+
+
+# Run Taipy GUI
+gui = Gui(page)
+partial = gui.add_partial(partial_md)
+gui.run(dark_mode=False, title="Stock Visualization")
