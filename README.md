@@ -41,7 +41,10 @@ taipy mate.py
 
 
 
-https://github.com/sneha-4-22/StockForecast/assets/112711068/f5f736dd-23db-45a8-9cc8-07f8d507dc42
+
+https://github.com/sneha-4-22/StockForecast/assets/112711068/9d40930f-d1ff-4e32-a1be-968a7a95a9c7
+
+
 
 
 
