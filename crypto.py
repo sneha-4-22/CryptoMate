@@ -1,67 +1,96 @@
-from taipy.gui import Gui, notify
-from datetime import date
-import pandas as pd
-import matplotlib.pyplot as plt
 import yfinance as yf
+import streamlit as st
+from PIL import Image
+from urllib.request import urlopen   
 
-# Function to fetch cryptocurrency data
-def get_crypto_data(coin, start_date, end_date):
-    data = yf.download(coin, start=start_date, end=end_date)
-    return data
 
-# Function to plot cryptocurrency data
-def plot_crypto_data(data):
-    plt.figure(figsize=(10, 6))
-    plt.plot(data.index, data['Close'], label='Closing Price')
-    plt.title('Cryptocurrency Historical Prices')
-    plt.xlabel('Date')
-    plt.ylabel('Price (USD)')
-    plt.legend()
-    plt.show()
+# Titles and subtitles
+st.title("Crypto Daily Prices")
+st.header("Main Dashboard")
+st.subheader("Add more crypto in code")
 
-# Define the start and end dates
-start_date = "2015-01-01"
-end_date = date.today().strftime("%Y-%m-%d")
 
-# Initial cryptocurrency selection
-selected_crypto = 'BTC-USD'
+# Define ticker variables
+Bitcoin = 'BTC-USD'
+Ethereum = 'ETH-USD'
+Ripple = 'XRP-USD'
+BitcoinCash = 'BCH-USD'
 
-# Fetch cryptocurrency data
-crypto_data = get_crypto_data(selected_crypto, start_date, end_date)
+# Fetch data from Yahoo Finance
+BTC_data = yf.Ticker(Bitcoin)
+ETH_data = yf.Ticker(Ethereum)
+XRP_data = yf.Ticker(Ripple)
+BCH_data = yf.Ticker(BitcoinCash)
 
-# Plot cryptocurrency data
-plot_crypto_data(crypto_data)
+# Fetch history data from Yahoo Finance
+BTC_his = BTC_data.history(period="max")
+ETH_his = ETH_data.history(period="max")
+XRP_his = XRP_data.history(period="max")
+BCH_his = BCH_data.history(period="max")
 
-# Define the layout page
-page = """
-<|container style="background-color: #F0F8FF;">
-# Cryptocurrency Historical Prices
+# Fetch data from dataframe
+BTC = yf.download(Bitcoin, start="2023-09-01", end="2023-09-02")
+ETH = yf.download(Ethereum, start="2023-09-01", end="2023-09-02")
+XRP = yf.download(Ripple, start="2023-09-01", end="2023-09-02")
+BCH = yf.download(BitcoinCash, start="2023-09-01", end="2023-09-02")
 
-<|part|crypto_selection style="margin-bottom: 20px;">
-#### Select Cryptocurrency:
-<|{selected_crypto}|input|label=Symbol|on_action=get_crypto_data|>
-|crypto_selection>
-<br/>
+# Bitcoin
+st.write("BITCOIN ($)")
 
-### **Historical** Prices
-<|{plot_crypto_data}|chart|>
-<br/>
-"""
+# Fetch and display image
+imageBTC = Image.open(
+    urlopen('https://s2.coinmarketcap.com/static/img/coins/64x64/1.png'))
+st.image(imageBTC)
 
-# Create the GUI instance
-gui = Gui(page)
+# Display dataframe
+st.table(BTC)
 
-# Function to update cryptocurrency data based on user input
-def get_crypto_data(state):
-    selected_crypto = state.selected_crypto.upper()
-    crypto_data = get_crypto_data(selected_crypto, start_date, end_date)
-    state.plot_crypto_data = crypto_data
+# Display a chart
+st.bar_chart(BTC_his.Close)
+#######################################
 
-# Add the function to the GUI
-gui.add_action('get_crypto_data', get_crypto_data)
+# Ethereum
+st.write("ETHEREUM ($)")
 
-# Add the partial for plotting cryptocurrency data
-gui.add_partial(plot_crypto_data)
+# Fetch and display image
+imageETH = Image.open(
+    urlopen('https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png'))
+st.image(imageETH)
 
-# Run the GUI
-gui.run(title="Cryptocurrency Analysis")
+# Display dataframe
+st.table(ETH)
+
+# Display a chart
+st.bar_chart(ETH_his.Close)
+################################################
+
+# Ripple
+st.write("RIPPLE ($)")
+
+# Fetch and display image
+imageXRP = Image.open(
+    urlopen('https://s2.coinmarketcap.com/static/img/coins/64x64/52.png'))
+st.image(imageXRP)
+
+# Display dataframe
+st.table(XRP)
+
+# Display a chart
+st.bar_chart(XRP_his.Close)
+################################################
+
+
+# BitcoinCash
+st.write("BITCOINCASH ($)")
+
+# Fetch and display image
+imageBCH = Image.open(
+    urlopen('https://s2.coinmarketcap.com/static/img/coins/64x64/1831.png'))
+st.image(imageBCH)
+
+# Display dataframe
+st.table(BCH)
+
+# Display a chart
+st.bar_chart(BCH_his.Close)
+################################################
