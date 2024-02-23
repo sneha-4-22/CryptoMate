@@ -27,7 +27,7 @@ git clone https://github.com/sneha-4-22/StockForecast.git
 2. Set up virtual env
 3. Install the required Python packages
 ```bash
-pip install taipy yfinance pandas keras
+pip install taipy yfinance pandas keras tensorflow
 
 ```
 4. navigate your corresponding folder
