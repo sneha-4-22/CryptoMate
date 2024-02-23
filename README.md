@@ -10,7 +10,8 @@ StockForecast is a stock price analysis dashboard that provides users with histo
 
 ## Requirements
 
-- Python 3.x
+- Python
+- Anaconda
 - taipy library
 - yfinance library
 - pandas library
