@@ -34,7 +34,7 @@ pip install taipy yfinance pandas keras tensorflow
 ```
 4. navigate your corresponding folder
 ```bash
-taipy mate.py
+taipy stock.py
 
 ```
 ## APP PREVIEW USING TAIPY GUI 
