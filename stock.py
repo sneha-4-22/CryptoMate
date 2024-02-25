@@ -76,8 +76,10 @@ From:
 To:
 <|{end_date}|date|on_change=get_data_from_range|> 
 |dates>
+
 <|layout|columns=1 2 1|gap=40px|class_name=card p2|
-<|part|years style="margin-bottom: 20px;">
+
+<|part|years style="margin-right: 20px;">
 
 #### **Prediction years**{: style="color: pink"}
 Select the no. of years you wanna predict: <|{n_years}|>  
@@ -86,9 +88,11 @@ Select the no. of years you wanna predict: <|{n_years}|>
 <|PREDICT|button|on_action=forecast_display|class_name={'plain' if len(forecast)==0 else ''}|>
 |years>
 |>
-<|part|ticker style="margin-bottom: 20px;">
+<|part|ticker style="margin-right: 20px;">
 
-<|part| Analysis |expandable|expanded=False| style="margin-bottom: 20px;">
+<|part| Analysis |expandable|expanded=False| style="margin-right: 20px;">
+|layout>
+<br/>
 <|layout|columns=1 1|
 <|
 ### **Stock closing and Opening price**{: style="color: pink"} 
@@ -98,7 +102,8 @@ Select the no. of years you wanna predict: <|{n_years}|>
 ### **Trading Insights**{: style="color: pink"} 
 <|{data}|chart|mode=line|x=Date|y=Volume|>
 |>
-
+|layout>
+<br/>
 ### **Stock Forecast**{: style="color: pink"} 👩🏻‍💻
 <|{forecast}|chart|mode=line|x=Date|y[1]=Lower|y[2]=Upper|>
 <br/>
