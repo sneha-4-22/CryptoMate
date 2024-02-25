@@ -46,6 +46,13 @@ def forecast_display(state):
 
 data = get_stock_data(selected_stock, start_date, end_date)
 forecast = generate_forecast_data(data, n_years)
+close_bins = pd.cut(data['Close'], bins=3)  # Divide 'Close' prices into three bins
+pie1_data = close_bins.value_counts()
+
+# Example 2: Pie Chart based on 'Open', 'High', 'Low', 'Close' prices
+price_columns = ['Open', 'High', 'Low', 'Close']
+price_counts = data[price_columns].apply(lambda x: pd.cut(x, bins=3).value_counts())
+pie2_data = price_counts.stack()
 show_dialog = False
 partial_md = "<|{forecast}|table|>"
 dialog_md = "<|{show_dialog}|dialog|partial={partial}|title=Stock Forecast |on_action={lambda state: state.assign('show_dialog', False)}|>"
@@ -57,7 +64,10 @@ page = """
 #### **Enter the Company name**{: style="color: pink"}
  Stock Name: 
 <|{selected_stock}|input|label=Stock|on_action=get_data_from_range|> 
-
+### **data:**{: style="color: pink"}  <|{selected_stock}|text|raw|>
+<|{data}|table|>
+<br/>
+|>
 <|part|dates style="margin-bottom: 20px;">
 <|text-center|
 #### **Enter Time Period**{: style="color: pink"}
@@ -70,8 +80,10 @@ To:
 <|part|years style="margin-bottom: 20px;">
 
 
+
 #### **Prediction years**{: style="color: pink"}
 Select the no. of years you wanna predict: <|{n_years}|>  
+
 <|{n_years}|slider|min=1|max=10|>  
 <|PREDICT|button|on_action=forecast_display|class_name={'plain' if len(forecast)==0 else ''}|>
 |years>
@@ -89,10 +101,6 @@ Select the no. of years you wanna predict: <|{n_years}|>
 <|{data}|chart|mode=line|x=Date|y=Volume|>
 |>
 
-### **Whole data: **{: style="color: pink"}  <|{selected_stock}|text|raw|>
-<|{data}|table|>
-<br/>
-|>
 ### **Stock Forecast**{: style="color: pink"} 👩🏻‍💻
 <|{forecast}|chart|mode=line|x=Date|y[1]=Lower|y[2]=Upper|>
 <br/>
@@ -100,6 +108,17 @@ Select the no. of years you wanna predict: <|{n_years}|>
 {: .text-center}
 |>
 <br/>
+### **Pie Charts Insights**{: style="color: pink"}
+<|layout|columns=1 2|gap=20px|class_name=card p2|
+<|part|pie1|
+#### **Pie Chart 1**{: style="color: pink"}
+<|{pie1_data}|chart|mode=pie|labels=Labels|values=Values|>
+|pie1>
+<|part|pie2|
+#### **Pie Chart 2**{: style="color: pink"}
+<|{pie2_data}|chart|mode=pie|labels=Labels|values=Values|>
+|pie2>
+|layout>
 """
 
 ui = Gui(page)
