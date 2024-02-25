@@ -79,12 +79,10 @@ To:
 <|layout|columns=1 2 1|gap=40px|class_name=card p2|
 <|part|years style="margin-bottom: 20px;">
 
-
-
 #### **Prediction years**{: style="color: pink"}
 Select the no. of years you wanna predict: <|{n_years}|>  
 
-<|{n_years}|slider|min=1|max=10|>  
+<|{n_years}|input|type=number|on_action=set_years|> 
 <|PREDICT|button|on_action=forecast_display|class_name={'plain' if len(forecast)==0 else ''}|>
 |years>
 |>
