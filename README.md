@@ -1,4 +1,5 @@
-# StockForecast
+
+# StockForecast  
 
 StockForecast is a stock price analysis  that provides users with  data and forecasted trends for selected stocks. It utilizes the Taipy GUI library for creating interactive user interfaces.
 
@@ -33,7 +34,7 @@ pip install taipy yfinance pandas keras tensorflow
 ```
 4. navigate your corresponding folder
 ```bash
-taipy mate.py
+taipy run stock.py
 
 ```
 ## APP PREVIEW USING TAIPY GUI 
