@@ -39,7 +39,11 @@ taipy run stock.py
 ```
 ## APP PREVIEW USING TAIPY GUI 
 
-https://github.com/sneha-4-22/StockForecast/assets/112711068/9d40930f-d1ff-4e32-a1be-968a7a95a9c7
+
+
+https://github.com/sneha-4-22/StockForecast/assets/112711068/beea3853-8b0a-4e82-bf71-e781447ac858
+
+
 
 few errors in model will solve them 
 
