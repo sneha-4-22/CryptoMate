@@ -4,6 +4,8 @@ from taipy.gui import Gui, notify
 df = pd.read_csv("C:\\Users\\Sneha\\Desktop\\FitMate\\dataset\\Cryptocurrency_Dataset_2023.csv")
 
 df["Price (Intraday)"] = df["Price (Intraday)"].str.replace(",", "").astype(float)
+# Clean the Market Cap column
+df["Market Cap"] = df["Market Cap"].replace('[^\d.]', '', regex=True).astype(float)
 
 percent_columns = ["% Change"]
 for col in percent_columns:
@@ -82,7 +84,8 @@ def on_filter(state):
     )
 
 if __name__ == "__main__":
-    df_selection = filter(
-        symbol, name
-    )
+    df_selection = filter(symbol, name)  
+    total_market_cap = int(df_selection["Market Cap"].sum())
+    page = page.replace("<|{int(df_selection['Market Cap'].sum())}|>", f"<|{total_market_cap}|>")
+    
     Gui(page).run(margin="0em", title="Crypto Dashboard")
