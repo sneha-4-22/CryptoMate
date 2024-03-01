@@ -43,6 +43,4 @@ CryptoMate is a user-friendly cryptocurrency dashboard that allows you to visual
 
 This project utilizes the `taipy` library for building the interactive dashboard.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
