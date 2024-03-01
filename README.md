@@ -9,6 +9,11 @@ CryptoMate is a user-friendly cryptocurrency dashboard that allows you to visual
 - **Average Price**: See the average intraday price of the selected cryptocurrencies.
 - **Average Change**: Monitor the average percentage change of the selected cryptocurrencies.
 - **Interactive Table**: Explore detailed information about cryptocurrencies in an interactive table format.
+## App Preview
+
+
+https://github.com/sneha-4-22/CryptoMate/assets/112711068/ba8e4ff1-9276-477b-85db-116c004ea67f
+
 
 ## Usage
 
