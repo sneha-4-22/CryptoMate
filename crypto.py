@@ -26,7 +26,7 @@ page = """
 
 <|25 75|layout|gap=30px|
 <|sidebar|
-## Please **filter**{: .color-primary} here:
+## Please **filter**{: style="color: #ff1493"} here:
 
 <|{symbol}|selector|lov={symbols}|multiple|label=Select the Symbol|dropdown|on_change=on_filter|class_name=fullwidth|>
 
@@ -35,21 +35,21 @@ page = """
 |>
 
 <main_page|
-# 📊 Cryptocurrency **Dashboard**{: .color-primary}
+# 📊 Cryptocurrency **Dashboard**{: style="color: #ff1493"}
 
 <|1 1 1|layout|
 <total_market_cap|
-## **Total Market Cap**{: .color-primary}:
+## **Total Market Cap**{: style="color: #ff1493"}:
 US $ <|{int(df_selection["Market Cap"].sum())}|>
 |total_market_cap>
 
 <average_price|
-## Average **Price (Intraday)**{: .color-primary}:
+## Average **Price (Intraday)**{: style="color: #ff1493"}:
 US $ <|{round(df_selection["Price (Intraday)"].mean(), 2)}|>
 |average_price>
 
 <average_change|
-## Average **Change**{: .color-primary}:
+## Average **Change**{: style="color: #ff1493"}:
 <|{round(df_selection["Change"].mean(), 2)}|>%
 |average_change>
 |>
