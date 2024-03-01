@@ -1,55 +1,46 @@
+# CryptoMate
 
-# StockForecast  
-
-StockForecast is a stock price analysis  that provides users with  data and forecasted trends for selected stocks. It utilizes the Taipy GUI library for creating interactive user interfaces.
+CryptoMate is a user-friendly cryptocurrency dashboard that allows you to visualize and analyze various cryptocurrency data. With CryptoMate, you can explore market trends, track price changes, and compare different cryptocurrencies effortlessly.
 
 ## Features
 
-- The GUI application will open in your default web browser. 
-- You can interact with the dashboard to select the stock, date range, and number of years for prediction using the Taipy GUI components.
-- Explore the  data and insights.
+- **Filtering Options**: Easily filter cryptocurrencies by symbol or name to focus on specific assets.
+- **Total Market Cap**: View the total market capitalization of the selected cryptocurrencies.
+- **Average Price**: See the average intraday price of the selected cryptocurrencies.
+- **Average Change**: Monitor the average percentage change of the selected cryptocurrencies.
+- **Interactive Table**: Explore detailed information about cryptocurrencies in an interactive table format.
 
-## Requirements
+## Usage
 
-- Python
-- Anaconda
-- taipy library
-- yfinance library
-- pandas library
-- keras library
+1. Clone this repository to your local machine:
 
-## Installation
+    ```bash
+    git clone https://github.com/sneha-4-22/CryptoMate.git
+    ```
 
-1. Clone the repository:
+2. Install the necessary dependencies:
 
-```bash
-git clone https://github.com/sneha-4-22/StockForecast.git
-```
+    ```bash
+    pip install taipy
+    ```
 
-2. Set up virtual env
-3. Install the required Python packages
-```bash
-pip install taipy yfinance pandas keras tensorflow
+3. Run the `crypto.py` script to launch the CryptoMate dashboard:
 
-```
-4. navigate your corresponding folder
-```bash
-taipy run stock.py
+    ```bash
+    taipy run crypto.py
+    ```
 
-```
-## APP PREVIEW USING TAIPY GUI 
+4. Access the dashboard through your web browser at ...(soon).
 
+5. Use the dropdown menus to select cryptocurrencies and explore their data.
 
+## Dependencies
 
-https://github.com/sneha-4-22/StockForecast/assets/112711068/beea3853-8b0a-4e82-bf71-e781447ac858
+- [pandas](https://pandas.pydata.org/)
+- [taipy](https://github.com/Avaiga/taipy)
 
+## Acknowledgments
 
+This project utilizes the `taipy` library for building the interactive dashboard.
 
-few errors in model will solve them 
-
-
-
-
-## Trained Stock model preview 
-https://github.com/sneha-4-22/StockForecast/assets/112711068/1eddcc41-9e15-4739-b2db-5d0f13349857
 
