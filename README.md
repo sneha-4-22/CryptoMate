@@ -36,8 +36,8 @@ CryptoMate is a user-friendly cryptocurrency dashboard that allows you to visual
 
 ## Dependencies
 
-- [pandas](https://pandas.pydata.org/)
-- [taipy](https://github.com/Avaiga/taipy)
+- Pandas
+- Taipy
 
 ## Acknowledgments
 
