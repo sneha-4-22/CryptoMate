@@ -15,7 +15,7 @@ CryptoMate is a user-friendly cryptocurrency dashboard that allows you to visual
 1. Clone this repository to your local machine:
 
     ```bash
-    git clone https://github.com/yourusername/CryptoMate.git
+    git clone https://github.com/sneha-4-22/CryptoMate.git
     ```
 
 2. Install the necessary dependencies:
