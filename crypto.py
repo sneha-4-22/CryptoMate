@@ -4,7 +4,7 @@ from taipy.gui import Gui, notify
 df = pd.read_csv("C:\\Users\\Sneha\\Desktop\\FitMate\\dataset\\Cryptocurrency_Dataset_2023.csv")
 
 df["Price (Intraday)"] = df["Price (Intraday)"].str.replace(",", "").astype(float)
-# Clean the Market Cap column
+
 df["Market Cap"] = df["Market Cap"].replace('[^\d.]', '', regex=True).astype(float)
 
 percent_columns = ["% Change"]
