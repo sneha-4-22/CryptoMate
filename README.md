@@ -46,7 +46,7 @@ https://github.com/sneha-4-22/CryptoMate/assets/112711068/ba417b4c-ffce-40a5-b55
 
 4. Access the dashboard through your web browser at ...(soon).
 
-5. Use the dropdown menus to select cryptocurrencies and explore their data.
+5. Use the dropdown menus to select cryptocurrencies and explore the data and insights.
 
 ## Dependencies
 
