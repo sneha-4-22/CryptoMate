@@ -64,7 +64,7 @@ US $ <|{round(df_selection["Price (Intraday)"].mean(), 2)}|>
 
 
 <|Line Graph|
-### Line Graph
+### InSights ☆°•°☆
 <|{x_selected}|selector|lov={numeric_columns}|dropdown=True|label=Select X Axis|>
 
 <|{y_selected}|selector|lov={numeric_columns}|dropdown=True|label=Select Y Axis|>
@@ -91,12 +91,7 @@ US $ <|{round(df_selection["Price (Intraday)"].mean(), 2)}|>
 |main_page>
 |>
 """
-# <|Histogram|
-# ### Histogram
-# <|{x_selected}|selector|lov={numeric_columns}|dropdown=True|label=Select X Axis|>
 
-# <|{histo_full}|chart|type=histogram|properties={properties_histo_full}|rebuild|y=EXITED|label=EXITED|color[1]=red|color[2]=green|name[1]=Exited|name[2]=Stayed|height=600px|>
-# |>
 def filter(symbol, name):
     df_selection = df[
         df["Symbol"].isin(symbol)
@@ -139,22 +134,7 @@ numeric_columns = ["Price (Intraday)", "Change", "% Change", "Market Cap", "Volu
 scatter_dataset = df.copy()  
 properties_scatter_dataset = {"x": x_selected, "y[1]": y_selected + '_pos', "y[2]": y_selected + '_neg'}
 
-# histo_full = df.copy()  
-# properties_histo_full = {"x[1]": x_selected, "x[2]": x_selected + '_neg'}
 
-
-
-# def update_histogram_and_scatter(state):
-#     global x_selected, y_selected, scatter_dataset, histo_full
-#     x_selected = state.x_selected
-#     y_selected = state.y_selected
-#     state.properties_scatter_dataset = properties_scatter_dataset
-#     state.scatter_dataset = scatter_dataset
-#     state.scatter_dataset_pred = scatter_dataset
-
-#     state.properties_histo_full = properties_histo_full
-#     state.histo_full = histo_full
-#     state.histo_full_pred = histo_full
 def update_histogram_and_scatter(state):
     global x_selected, y_selected, scatter_dataset, histo_full
     x_selected = state.x_selected
