@@ -14,14 +14,13 @@ CryptoMate is a user-friendly cryptocurrency dashboard that allows you to visual
 
 
 
-https://github.com/sneha-4-22/CryptoMate/assets/112711068/ba417b4c-ffce-40a5-b558-2ebef6a4ff41
+
+https://github.com/sneha-4-22/CryptoMate/assets/112711068/1b648bc9-f8f1-4faa-90ab-41485bc08fc7
 
 
 
 - **stil under progresss need to work on  providing the analysis and insights**
-![image](https://github.com/sneha-4-22/CryptoMate/assets/112711068/13e0bd16-7b3b-4a33-b3ec-82990bfdaf4f)
 
-![image](https://github.com/sneha-4-22/CryptoMate/assets/112711068/9c9b39f4-b7ea-4408-a250-0f066eb125e7)
 
 
 ## Usage
@@ -31,22 +30,22 @@ https://github.com/sneha-4-22/CryptoMate/assets/112711068/ba417b4c-ffce-40a5-b55
     ```bash
     git clone https://github.com/sneha-4-22/CryptoMate.git
     ```
-
-2. Install the necessary dependencies:
+2. Set up virtual env
+3. Install the necessary dependencies:
 
     ```bash
     pip install taipy
     ```
 
-3. Run the `crypto.py` script to launch the CryptoMate dashboard:
+4. Run the `crypto.py` script to launch the CryptoMate dashboard:
 
     ```bash
     taipy run crypto.py
     ```
 
-4. Access the dashboard through your web browser at ...(soon).
+5. Access the dashboard through your web browser at ...(soon).
 
-5. Use the dropdown menus to select cryptocurrencies and explore their data.
+6. Use the dropdown menus to select cryptocurrencies and explore the data and insights.
 
 ## Dependencies
 
