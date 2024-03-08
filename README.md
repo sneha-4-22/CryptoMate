@@ -19,9 +19,7 @@ https://github.com/sneha-4-22/CryptoMate/assets/112711068/ba417b4c-ffce-40a5-b55
 
 
 - **stil under progresss need to work on  providing the analysis and insights**
-![image](https://github.com/sneha-4-22/CryptoMate/assets/112711068/13e0bd16-7b3b-4a33-b3ec-82990bfdaf4f)
 
-![image](https://github.com/sneha-4-22/CryptoMate/assets/112711068/9c9b39f4-b7ea-4408-a250-0f066eb125e7)
 
 
 ## Usage
