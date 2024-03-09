@@ -4,11 +4,12 @@ CryptoMate is a user-friendly cryptocurrency dashboard that allows you to visual
 
 ## Features
 
-- **Filtering Options**: Easily filter cryptocurrencies by symbol or name to focus on specific assets.
-- **Total Market Cap**: View the total market capitalization of the selected cryptocurrencies.
+- **Filtering Options**: Easily filter cryptocurrencies by symbol and name to focus on specific assets.
+- **Total Market Cap**: View the total market capitalization and average price of selected cryptocurrencies, updated dynamically.
 - **Average Price**: See the average intraday price of the selected cryptocurrencies.
-- **Average Change**: Monitor the average percentage change of the selected cryptocurrencies.
+- **Average Change**: Track the average  change to gauge overall market sentiment and performance.
 - **Interactive Table**: Explore detailed information about cryptocurrencies in an interactive table format.
+- **Interactive Visualization**: Explore pie charts based on your filters, enabling deeper analysis and insights.
 ## App Preview
 
 https://github.com/sneha-4-22/CryptoMate/assets/112711068/52fa1442-ab55-4aed-9fbb-c4433769d67f
