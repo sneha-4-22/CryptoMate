@@ -11,16 +11,7 @@ CryptoMate is a user-friendly cryptocurrency dashboard that allows you to visual
 - **Interactive Table**: Explore detailed information about cryptocurrencies in an interactive table format.
 ## App Preview
 
-
-
-
-
-https://github.com/sneha-4-22/CryptoMate/assets/112711068/1b648bc9-f8f1-4faa-90ab-41485bc08fc7
-
-
-
-- **stil under progresss need to work on  providing the analysis and insights**
-
+https://github.com/sneha-4-22/CryptoMate/assets/112711068/52fa1442-ab55-4aed-9fbb-c4433769d67f
 
 
 ## Usage
