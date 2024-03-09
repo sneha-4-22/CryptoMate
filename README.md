@@ -14,6 +14,7 @@ CryptoMate is a user-friendly cryptocurrency dashboard that allows you to visual
 https://github.com/sneha-4-22/CryptoMate/assets/112711068/52fa1442-ab55-4aed-9fbb-c4433769d67f
 
 ![image](https://github.com/sneha-4-22/CryptoMate/assets/112711068/10345c77-5039-4d13-93ea-1d9ea07e505b)
+![image](https://github.com/sneha-4-22/CryptoMate/assets/112711068/8e998647-8b0a-45c4-ab9b-91e019ba875f)
 
 ## Usage
 
