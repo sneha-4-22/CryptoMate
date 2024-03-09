@@ -24,11 +24,11 @@ https://github.com/sneha-4-22/CryptoMate/assets/112711068/52fa1442-ab55-4aed-9fb
     ```bash
     git clone https://github.com/sneha-4-22/CryptoMate.git
     ```
-2. Set up virtual env
+2. Set up virtual env 
 3. Install the necessary dependencies:
 
     ```bash
-    pip install taipy
+    pip install -r requirements.txt
     ```
 
 4. Run the `crypto.py` script to launch the CryptoMate dashboard:
