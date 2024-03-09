@@ -26,7 +26,7 @@ page = """
 
 <|25 75|layout|gap=30px|
 <|sidebar|
-## **Filter here ☆ **{: style="color: #ff1493"}
+## **Filter here 👻👩🏻‍💻 **{: style="color: #ff1493"}
 
 <|{symbol}|selector|lov={symbols}|multiple|label=Select the Symbol|dropdown|on_change=on_filter|class_name=fullwidth|>
 
@@ -64,26 +64,17 @@ US $ <|{round(df_selection["Price (Intraday)"].mean(), 2)}|>
 
 
 <|Line Graph|
-### InSights ☆°•°☆
+### **InSights ☆°•°☆**{: style="color: #ff00ff"}
 <|{x_selected}|selector|lov={numeric_columns}|dropdown=True|label=Select X Axis|>
 
 <|{y_selected}|selector|lov={numeric_columns}|dropdown=True|label=Select Y Axis|>
 
-<|{scatter_dataset}|chart|type=line|properties={properties_line_graph}|rebuild|x={x_selected}|y={y_selected}|height=600px|>
+<|{df_selection}|chart|type=line|properties={properties_line_graph}|rebuild|x={x_selected}|y={y_selected}|height=600px|>
 |>
+### **Pie Chart Visualisation ☆°•°☆**{: style="color: #ff00ff"}
+<|{df_selection}|chart|type=pie|values=Market Cap|labels=Symbol|>
 
-<|Scatter|
-### Scatter
-<|layout|columns= 1 2|
-<|{x_selected}|selector|lov={numeric_columns}|dropdown|label=Select X Axis|>
-
-<|{y_selected}|selector|lov={numeric_columns}|dropdown|label=Select Y Axis|>
 |>
-
-<|{scatter_dataset}|chart|properties={properties_scatter_dataset}|rebuild|color[1]=red|color[2]=green|name[1]=Exited|name[2]=Stayed|mode=markers|type=scatter|height=600px|>
-|>
-|>
-
 <|Crypto Table|expandable|not expanded|
 <|{df_selection}|table|page_size=5|>
 |>
@@ -104,44 +95,18 @@ def filter(symbol, name):
 
 def on_filter(state):
     if len(state.symbol) == 0 or len(state.name) == 0:
-        notify(state, "Error", "No results found. Check the filters.")
+        notify(state, "Error", "Ok Ok !! processsing select name also 🤯")
         return
     
     state.df_selection = filter(
         state.symbol, state.name
     )
-def creation_scatter_dataset(test_dataset:pd.DataFrame):
-    scatter_dataset = test_dataset.copy()
-
-    for column in scatter_dataset.columns:
-        if column != 'EXITED' :
-            column_neg = str(column)+'_neg'
-            column_pos = str(column)+'_pos'
-            
-            scatter_dataset[column_neg] = scatter_dataset[column]
-            scatter_dataset[column_pos] = scatter_dataset[column]
-            
-            scatter_dataset.loc[(scatter_dataset['EXITED'] == 1),column_neg] = np.NaN
-            scatter_dataset.loc[(scatter_dataset['EXITED'] == 0),column_pos] = np.NaN
-    
-    return scatter_dataset
 
 
 x_selected = "Price (Intraday)"
 y_selected = "Change"
 numeric_columns = ["Price (Intraday)", "Change", "% Change", "Market Cap", "Volume in Currency (Since 0:00 UTC)", "Volume in Currency (24Hr)", "Total Volume All Currencies (24Hr)", "Circulating Supply"]
 
-scatter_dataset = df.copy()  
-properties_scatter_dataset = {"x": x_selected, "y[1]": y_selected + '_pos', "y[2]": y_selected + '_neg'}
-
-
-def update_histogram_and_scatter(state):
-    global x_selected, y_selected, scatter_dataset, histo_full
-    x_selected = state.x_selected
-    y_selected = state.y_selected
-    state.properties_line_graph = {"x": x_selected, "y": y_selected}
-    state.scatter_dataset = scatter_dataset
-    state.scatter_dataset_pred = scatter_dataset
 
    
 if __name__ == "__main__":
