@@ -43,8 +43,8 @@ https://github.com/sneha-4-22/CryptoMate/assets/112711068/52fa1442-ab55-4aed-9fb
 
 ## Dependencies
 
-- Pandas
-- Taipy
+-  Pandas
+-  [Taipy](https://www.taipy.io/)
 
 ## Acknowledgments
 
