@@ -35,7 +35,7 @@ page = """
 |>
 
 <main_page|
-# 📊 **Cryptocurrency Dashboard**{: style="color: #ACE2E1"}
+# 📊 **Cryptocurrency Dashboard**{: style="color: #B7C9F2"}
 
 <|1 1 1|layout|
 <total_market_cap|
@@ -110,7 +110,7 @@ about_page_content = """
 
 <div style="display: flex; align-items: center; justify-content: space-around;border-radius: 2%; border: 3px solid #FFD1E3;margin-bottom:5px;">
     <div style="flex: 1; text-align: center;">
-        <img src="sneha.jpg" alt="Your Picture" style="border-radius: 50%; border: 3px solid #D875C7; width: 300px; height: 270px;" />
+        <img src="sneha.jpg" alt="Your Picture" style="border-radius: 50%;padding: 10px; border: 3px solid #D875C7; width: 300px; height: 280px;" />
     </div>
     <div style="flex: 1; padding: 20px;">
         <p style="font-size: 18px; color: #7BC9FF;">Hi there! 👋 I'm Sneha, the creator of this Crypto Dashboard. I'm passionate about cryptocurrencies and data analysis. This project aims to provide insights into cryptocurrency trends using Python and Taipy.</p>
