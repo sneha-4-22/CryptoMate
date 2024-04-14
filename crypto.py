@@ -108,9 +108,10 @@ numeric_columns = ["Price (Intraday)", "Change", "% Change", "Market Cap", "Volu
 about_page_content = """
 # **About Me**{: style="color: #B7C9F2"}
 
-<div style="display: flex; align-items: center; justify-content: space-around;border-radius: 2%; border: 3px solid #FFD1E3;margin-bottom:5px;">
+<div style="display: flex; align-items: center; justify-content: space-around;border-radius: 2%; border: 3px solid #FFD1E3;margin-bottom:5px; position: relative;">
     <div style="flex: 1; text-align: center;">
-        <img src="sneha.jpg" alt="Your Picture" style="border-radius: 50%;padding: 10px; border: 3px solid #D875C7; width: 300px; height: 280px;" />
+        <img src="sneha.jpg" alt="Your Picture" style="border-radius: 50%; padding: 10px; border: 3px solid #D875C7; width: 300px; height: 280px; " />
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 2%; box-shadow: 0 0 20px 10px #D875C7; pointer-events: none;"></div>
     </div>
     <div style="flex: 1; padding: 20px;">
         <p style="font-size: 18px; color: #7BC9FF;">Hi there! 👋 I'm Sneha, the creator of this Crypto Dashboard. I'm passionate about cryptocurrencies and data analysis. This project aims to provide insights into cryptocurrency trends using Python and Taipy.</p>
