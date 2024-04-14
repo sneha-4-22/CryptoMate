@@ -1,7 +1,7 @@
 import pandas as pd
 from taipy.gui import Gui, notify
 import numpy as np
-df = pd.read_csv("C:\\Users\\Sneha\\Desktop\\FitMate\\dataset\\Cryptocurrency_Dataset_2023.csv")
+df = pd.read_csv("C:\\Users\\Sneha\\Desktop\\CryptoMate\\dataset\\Cryptocurrency_Dataset_2023.csv")
 
 df["Price (Intraday)"] = df["Price (Intraday)"].str.replace(",", "").astype(float)
 
@@ -75,12 +75,10 @@ US $ <|{round(df_selection["Price (Intraday)"].mean(), 2)}|>
 <|{df_selection}|chart|type=pie|values=Market Cap|labels=Symbol|>
 
 |>
-<|Crypto Table|expandable|not expanded|
-<|{df_selection}|table|page_size=5|>
-|>
 
 |main_page>
 |>
+
 """
 
 def filter(symbol, name):
